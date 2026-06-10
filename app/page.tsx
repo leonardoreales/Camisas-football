@@ -4,7 +4,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/store/ProductCard";
-import { JerseyVisual } from "@/components/store/JerseyVisual";
+import { Reveal } from "@/components/anim/Reveal";
+import { Hero3DLazy } from "@/components/three/Hero3DLazy";
 import { WhatsAppButton } from "@/components/store/WhatsAppButton";
 import { getProductosFeatured, categoriasMock } from "@/lib/mock-data";
 
@@ -65,19 +66,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Camiseta protagonista */}
+            {/* Camiseta protagonista en 3D */}
             <div className="relative mx-auto w-full max-w-md">
               <div
-                className="absolute inset-0 opacity-40 blur-3xl"
+                className="pointer-events-none absolute inset-0 opacity-40 blur-3xl"
                 style={{
                   background: `radial-gradient(circle at 50% 45%, ${heroJersey.colores.primario}, transparent 65%)`,
                 }}
               />
-              <JerseyVisual
-                {...heroJersey.colores}
+              <Hero3DLazy
+                colores={heroJersey.colores}
                 nombre={heroJersey.dorsal?.nombre}
                 numero={heroJersey.dorsal?.numero}
-                className="relative w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
               />
             </div>
           </div>
@@ -124,15 +124,15 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <Reveal stagger className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {featured.map((producto) => (
               <ProductCard key={producto.id} producto={producto} />
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* ───────────── BANNER PERSONALIZACIÓN ───────────── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
+        <Reveal className="mx-auto block max-w-7xl px-4 sm:px-6">
           <div className="border-edge from-elevated to-surface relative overflow-hidden rounded-md border bg-gradient-to-br p-10 sm:p-14">
             <div className="bg-accent-green/10 pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full blur-[100px]" />
             <div className="relative max-w-xl">
@@ -151,7 +151,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </section>
+        </Reveal>
       </main>
 
       <Footer />
