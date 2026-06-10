@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { CartDrawer } from "@/components/store/CartDrawer";
 
 /**
  * Providers globales de la app.
@@ -22,5 +23,10 @@ export function Providers({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <CartDrawer />
+    </>
+  );
 }

@@ -94,6 +94,7 @@ export type Personalizacion = {
 export type CartItem = {
   productoId: string;
   varianteId: string;
+  slug: string;
   nombre: string;
   imagen: string;
   equipo: string;
@@ -101,6 +102,8 @@ export type CartItem = {
   precio: number;
   cantidad: number;
   personalizacion?: Personalizacion;
+  /** Colores para la ilustración SVG (placeholder hasta tener fotos reales). */
+  colores?: { primario: string; secundario: string; detalle: string };
 };
 
 // ─── API Responses ───────────────────────────────────────────────

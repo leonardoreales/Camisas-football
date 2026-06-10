@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ShoppingBag, Search, User } from "lucide-react";
+import { Search, User } from "lucide-react";
+import { CartButton } from "@/components/store/CartButton";
 
 const NAV_LINKS = [
   { href: "/catalogo", label: "Catálogo" },
@@ -45,16 +46,7 @@ export function Navbar() {
           >
             <User className="size-5" />
           </Link>
-          <Link
-            href="/carrito"
-            className="text-muted hover:text-content hover:bg-elevated relative grid size-10 place-items-center rounded transition-colors"
-            aria-label="Carrito"
-          >
-            <ShoppingBag className="size-5" />
-            <span className="bg-accent-green text-base absolute right-1 top-1 grid size-4 place-items-center rounded-full font-mono text-[10px] font-bold">
-              0
-            </span>
-          </Link>
+          <CartButton />
         </div>
       </div>
     </header>

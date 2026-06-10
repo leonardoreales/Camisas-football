@@ -5,15 +5,40 @@ import { Check, ShoppingBag } from "lucide-react";
 import { formatCOP } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { JerseyVisual } from "./JerseyVisual";
+import { useCart } from "@/lib/store/cart";
 import type { MockProducto } from "@/lib/mock-data";
 
 export function ProductDetail({ producto }: { producto: MockProducto }) {
   const [tallaSel, setTallaSel] = useState<string | null>(null);
   const [nombre, setNombre] = useState(producto.dorsal?.nombre ?? "");
   const [numero, setNumero] = useState(producto.dorsal?.numero ?? "");
+  const addItem = useCart((s) => s.addItem);
 
   const tieneDescuento = producto.precio_descuento != null;
   const precioFinal = producto.precio_descuento ?? producto.precio;
+
+  function agregarAlCarrito() {
+    if (!tallaSel) return;
+    const variante = producto.variantes?.find((v) => v.talla === tallaSel);
+    if (!variante) return;
+
+    const personalizacion =
+      nombre || numero ? { nombre: nombre || undefined, numero: numero || undefined } : undefined;
+
+    addItem({
+      productoId: producto.id,
+      varianteId: variante.id,
+      slug: producto.slug,
+      nombre: producto.nombre,
+      imagen: producto.imagenes[0] ?? "",
+      equipo: producto.equipo,
+      talla: tallaSel,
+      precio: precioFinal,
+      cantidad: 1,
+      personalizacion,
+      colores: producto.colores,
+    });
+  }
 
   return (
     <div className="grid gap-10 lg:grid-cols-2">
@@ -123,7 +148,12 @@ export function ProductDetail({ producto }: { producto: MockProducto }) {
 
         {/* Add to cart */}
         <div className="mt-8 flex gap-3">
-          <Button size="lg" className="flex-1" disabled={!tallaSel}>
+          <Button
+            size="lg"
+            className="flex-1"
+            disabled={!tallaSel}
+            onClick={agregarAlCarrito}
+          >
             <ShoppingBag className="size-4" />
             {tallaSel ? "Agregar al carrito" : "Selecciona una talla"}
           </Button>
