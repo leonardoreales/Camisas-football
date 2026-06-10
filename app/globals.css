@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ============================================================
+   KITSTORE — Sistema de diseño
+   Estética editorial oscura con detalles eléctricos.
+   Tokens base + mapeo a utilidades Tailwind v4 (@theme).
+   ============================================================ */
+
+:root {
+  /* Superficies */
+  --bg-base: #08080e; /* negro azulado profundo */
+  --bg-surface: #111118; /* superficie de cards */
+  --bg-elevated: #1a1a26; /* modales, drawers */
+  --border: #1e1e2e; /* bordes sutiles */
+
+  /* Acentos */
+  --accent-green: #00ff87; /* verde eléctrico — CTA principal */
+  --accent-red: #ff2e5b; /* rojo/rosa — badges, alertas, ofertas */
+
+  /* Texto */
+  --text-primary: #f0f0f5;
+  --text-muted: #6b6b80;
+  --text-disabled: #3a3a4a;
+}
+
+@theme inline {
+  /* Colores → genera bg-*, text-*, border-* */
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-edge: var(--border);
+  --color-accent-green: var(--accent-green);
+  --color-accent-red: var(--accent-red);
+  --color-content: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-disabled: var(--text-disabled);
+
+  /* Tipografías (las variables las inyecta next/font en el layout) */
+  --font-display: var(--font-oswald), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+
+  /* Escala display custom */
+  --text-display-2xl: 4.5rem;
+  --text-display-2xl--line-height: 1;
+  --text-display-2xl--letter-spacing: -0.02em;
+  --text-display-xl: 3.75rem;
+  --text-display-xl--line-height: 1;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-lg: 3rem;
+  --text-display-lg--line-height: 1.1;
+  --text-display-md: 2.25rem;
+  --text-display-md--line-height: 1.2;
+
+  /* Border radius — estética geométrica, casi sin redondeo */
+  --radius: 4px;
+  --radius-md: 8px;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings con la display por defecto */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Scrollbar acorde a la estética */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border);
+}
+
+/* Selección de texto */
+::selection {
+  background: var(--accent-green);
+  color: var(--bg-base);
+}
+
+/* Respetar prefers-reduced-motion globalmente */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
