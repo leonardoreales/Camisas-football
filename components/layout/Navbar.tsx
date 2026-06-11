@@ -1,13 +1,8 @@
 import Link from "next/link";
 import { Search, User } from "lucide-react";
 import { CartButton } from "@/components/store/CartButton";
-
-const NAV_LINKS = [
-  { href: "/catalogo", label: "Catálogo" },
-  { href: "/catalogo?liga=Liga+BetPlay", label: "Liga BetPlay" },
-  { href: "/catalogo?liga=Premier+League", label: "Europa" },
-  { href: "/catalogo?version=jugador", label: "Versión Jugador" },
-];
+import { MobileMenu } from "@/components/layout/MobileMenu";
+import { NAV_LINKS } from "@/lib/nav-links";
 
 export function Navbar() {
   return (
@@ -48,19 +43,20 @@ export function Navbar() {
           {/* Acciones */}
           <div className="flex items-center gap-1">
             <button
-              className="text-muted hover:text-content hover:bg-elevated grid size-10 place-items-center rounded transition-colors"
+              className="text-muted hover:text-content hover:bg-elevated hidden sm:grid size-10 place-items-center rounded transition-colors"
               aria-label="Buscar"
             >
               <Search className="size-5" />
             </button>
             <Link
               href="/login"
-              className="text-muted hover:text-content hover:bg-elevated grid size-10 place-items-center rounded transition-colors"
+              className="text-muted hover:text-content hover:bg-elevated hidden md:grid size-10 place-items-center rounded transition-colors"
               aria-label="Mi cuenta"
             >
               <User className="size-5" />
             </Link>
             <CartButton />
+            <MobileMenu />
           </div>
         </div>
       </header>
