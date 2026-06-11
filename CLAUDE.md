@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Qué es
 
-KitStore — e-commerce de camisas de fútbol para Colombia (monorepo fullstack Next.js).
+**Rewind** — e-commerce de camisas de fútbol retro premium para Colombia (monorepo fullstack Next.js).
 Idioma del dominio: **español** (productos, ordenes, variantes, items_orden, datos_envio…).
-Nombre de marca provisional; puede cambiar.
+Paleta: navy `#1C2346` + oro satinado `#C9A84C`. Tipografía display: Oswald + Abril Fatface.
 
 ## Comandos
 
@@ -34,8 +34,8 @@ Este repo usa deliberadamente versiones modernas. **No revertir a las del spec.*
 
 Los tokens viven en `app/globals.css` dentro de `@theme`, no en un archivo JS.
 Las utilidades custom generadas son: `bg-base/surface/elevated`, `border-edge`,
-`text-content/muted/disabled`, `bg-accent-green`, `bg-accent-red`, y las fuentes
-`font-display` (Oswald), `font-body` (Inter), `font-mono` (JetBrains).
+`text-content/muted/disabled`, `bg-accent-green` (dorado `#C9A84C`), `bg-accent-red` (rojo `#C0392B`), y las fuentes
+`font-display` (Oswald), `font-brand` (Abril Fatface — logo/hero), `font-body` (Inter), `font-mono` (JetBrains).
 `globals.css` fuerza `h1–h4` a `uppercase` con `font-display`; para texto normal
 en headings usar `normal-case`. Radius por defecto 4px (estética geométrica).
 

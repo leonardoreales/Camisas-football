@@ -73,7 +73,7 @@ export const useCart = create<CartState>()(
       toggle: () => set((s) => ({ isOpen: !s.isOpen })),
     }),
     {
-      name: "kitstore-cart",
+      name: "rewind-cart",
       // No persistir el estado del drawer
       partialize: (state) => ({ items: state.items }),
     },

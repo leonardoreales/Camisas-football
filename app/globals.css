@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 /* ============================================================
-   KITSTORE — Sistema de diseño
-   Estética editorial oscura con detalles eléctricos.
+   REWIND — Sistema de diseño
+   Navy profundo + oro satinado. Retro premium.
    Tokens base + mapeo a utilidades Tailwind v4 (@theme).
    ============================================================ */
 
 :root {
-  /* Superficies */
-  --bg-base: #08080e; /* negro azulado profundo */
-  --bg-surface: #111118; /* superficie de cards */
-  --bg-elevated: #1a1a26; /* modales, drawers */
-  --border: #1e1e2e; /* bordes sutiles */
+  /* Superficies — escala de navy oscuro a negro */
+  --bg-base: #090B14;    /* negro con alma navy — fondo principal */
+  --bg-surface: #0F1220; /* navy oscuro — cards, panels */
+  --bg-elevated: #1C2346; /* navy exacto — modales, drawers, hover states */
+  --border: #242B4A;     /* borde navy suave */
 
-  /* Acentos */
-  --accent-green: oklch(0.82 0.22 155); /* volt-green — CTA principal (refinado: premium, no fluorescente) */
-  --accent-red: #ff2e5b; /* rojo/rosa — badges, alertas, ofertas */
+  /* Acentos — Rewind brand */
+  --accent-green: #C9A84C; /* oro satinado deluxe — CTA, links, highlights */
+  --accent-red: #C0392B;   /* rojo vino — badges, alertas, precio oferta */
 
-  /* Texto */
-  --text-primary: #f0f0f5;
-  --text-muted: #6b6b80;
-  --text-disabled: #3a3a4a;
+  /* Texto — blanco con tinte azul para armonizar con el navy */
+  --text-primary: #EEF0F8;
+  --text-muted: #6B7694;
+  --text-disabled: #343B55;
 }
 
 @theme inline {
@@ -37,6 +37,7 @@
 
   /* Tipografías (las variables las inyecta next/font en el layout) */
   --font-display: var(--font-oswald), sans-serif;
+  --font-brand: var(--font-abril), serif; /* Abril Fatface — logo, hero headlines */
   --font-body: var(--font-inter), sans-serif;
   --font-mono: var(--font-jetbrains), monospace;
 

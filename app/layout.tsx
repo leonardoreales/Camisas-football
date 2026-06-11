@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Oswald, Inter, JetBrains_Mono } from "next/font/google";
+import { Oswald, Inter, JetBrains_Mono, Abril_Fatface } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/layout/Providers";
 
@@ -7,6 +7,12 @@ const oswald = Oswald({
   variable: "--font-oswald",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const abrilFatface = Abril_Fatface({
+  variable: "--font-abril",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const inter = Inter({
@@ -23,14 +29,28 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "KitStore — Camisas de fútbol premium",
-    template: "%s · KitStore",
+    default: "Rewind — Camisas de fútbol retro premium",
+    template: "%s · Rewind",
   },
   description:
-    "Tienda online premium de camisas de fútbol. Versiones jugador y aficionado, personalización de dorsal y pago seguro en Colombia.",
+    "Camisas de fútbol retro y clásicas. Los kits icónicos del fútbol mundial, versiones jugador y aficionado. Envío a toda Colombia con pago seguro.",
+  keywords: [
+    "camisas fútbol retro Colombia",
+    "camisetas vintage fútbol",
+    "kits clásicos fútbol",
+    "camisas fútbol originales Colombia",
+    "tienda camisas fútbol",
+  ],
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
   ),
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    siteName: "Rewind",
+  },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -41,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-CO"
-      className={`${oswald.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${oswald.variable} ${abrilFatface.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="bg-base text-content flex min-h-full flex-col">
         <Providers>{children}</Providers>
