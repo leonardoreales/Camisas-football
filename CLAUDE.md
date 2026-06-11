@@ -254,7 +254,7 @@ Se trabaja directo en `main` (proyecto solo-dev).
 | 🟡 Media | Búsqueda en Navbar | Icono sin handler |
 | 🟡 Media | Footer links | Spans sin href |
 | 🟡 Media | Webhook Wompi `/api/webhooks/wompi` | Responder 200 siempre; descontar stock |
-| 🟡 Media | Animate phase (impeccable) | ScrollTrigger reveals en CategoryCards y hero |
+| 🟡 Media | Animate + Layout + Craft (impeccable) | Plan listo en `.claude/plans/sparkling-twirling-waffle.md` |
 | 🟢 Baja | Sitemap dinámico | Actualmente rutas hardcodeadas |
 | 🟢 Baja | Unificar marca "KITSTORE" → "Rewind" | login/page.tsx aún dice KITSTORE |
 | 🟢 Baja | Guía de tallas | Texto sin funcionalidad en ProductDetail |
@@ -308,4 +308,53 @@ Implementar filtros funcionales del catálogo (URL query params) — es lo más 
 **Commit:** `5ba20af` — `npm run build` 0 errores TypeScript
 
 **Próxima sesión sugerida:**
-`/impeccable animate` — ScrollTrigger reveals en CategoryCards, hero entrance, stagger en featured grid. Luego `/impeccable layout` para afinar espaciado y ritmo.
+`/impeccable animate` → `/impeccable layout` → `/impeccable craft` — Plan completo documentado en `.claude/plans/sparkling-twirling-waffle.md`. Ver sección 13 para el hilo de arranque.
+
+---
+
+### Sesión 2026-06-11 (cierre — plan animate/layout/craft)
+
+**Contexto:** Continuación post-redesign sprint. Fix de Supabase + planificación de las 3 fases restantes del workflow impeccable.
+
+**Hecho:**
+- `proxy.ts` — Supabase auth desactivado temporalmente (middleware comentado). La tienda corre sin `.env.local`.
+  Para reactivar: descomentar 2 líneas en `proxy.ts` y añadir credenciales a `.env.local`
+- `lib/supabase/middleware.ts` — guardada mejora que hace fail graceful si faltan env vars (para cuando se reactive)
+- Plan completo escrito en `.claude/plans/sparkling-twirling-waffle.md` con 12 cambios en 5 archivos
+
+**Estado al cerrar:** Build limpio. Dev server corriendo sin errores. 2 commits adelante de origin/main (ambos ya pusheados).
+
+---
+
+## 13. Hilo de arranque — próxima sesión
+
+> Copiar esto como primer mensaje al abrir nueva sesión:
+
+```
+Retomamos el proyecto Rewind. Lee CLAUDE.md sección 11 y 12, y el plan en
+.claude/plans/sparkling-twirling-waffle.md.
+
+El plan está aprobado y listo para ejecutar. Son 3 fases sobre app/page.tsx
+y 4 componentes existentes:
+
+FASE 1 — ANIMATE:
+- Crear components/store/HeroCopy.tsx (client island, Motion stagger, page-load)
+- app/page.tsx: usar HeroCopy en hero copy section
+- app/page.tsx: CategoryCards → <Reveal stagger> como contenedor directo
+- app/page.tsx: section headers → <Reveal y={20}>
+- app/page.tsx: featured grid desktop → <Reveal stagger> único con divs internos
+
+FASE 2 — LAYOUT:
+- app/page.tsx: ritmo vertical (pt-4 en featured, mb-10 en headers, md:gap-5 en grid)
+- app/page.tsx: text-balance en H1 y h2
+- components/store/CategoryCard.tsx: min-w-[148px] en Link para mobile snap
+
+FASE 3 — CRAFT:
+- components/store/FilterPanel.tsx: talla buttons h-9 w-9 → h-11 w-11 (44px touch target)
+- components/store/CategoryCard.tsx: focus-visible ring verde
+- components/store/ProductCard.tsx: focus-visible ring verde
+- npm run build como gate de cierre
+
+Ejecuta en ese orden, un commit por fase, sin parar a preguntar.
+El dev server está en http://localhost:3000 (npm run dev para levantarlo).
+```
