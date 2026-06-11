@@ -14,7 +14,7 @@
   --border: #1e1e2e; /* bordes sutiles */
 
   /* Acentos */
-  --accent-green: #00ff87; /* verde eléctrico — CTA principal */
+  --accent-green: oklch(0.82 0.22 155); /* volt-green — CTA principal (refinado: premium, no fluorescente) */
   --accent-red: #ff2e5b; /* rojo/rosa — badges, alertas, ofertas */
 
   /* Texto */

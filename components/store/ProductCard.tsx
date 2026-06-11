@@ -14,7 +14,7 @@ export function ProductCard({ producto }: { producto: MockProducto }) {
   return (
     <Link
       href={`/producto/${producto.slug}`}
-      className="group border-edge bg-surface hover:border-accent-green/50 relative flex flex-col overflow-hidden rounded-md border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_rgba(0,255,135,0.25)]"
+      className="group border-edge bg-surface hover:border-accent-green/50 relative flex flex-col overflow-hidden rounded-md border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_oklch(0.82_0.22_155_/_0.25)]"
     >
       {/* Badges */}
       <div className="absolute left-3 top-3 z-10 flex flex-col gap-2">

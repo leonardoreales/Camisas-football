@@ -86,7 +86,7 @@ export function JerseyMesh({
   detalle: string;
   numero?: string;
 }) {
-  const geo = useMemo(buildGeometry, []);
+  const geo = useMemo(() => buildGeometry(), []);
   const colorTexto = esColorClaro(primario) ? "#0B0B12" : "#FFFFFF";
   const numTex = useMemo(
     () => (numero ? numeroTexture(numero, colorTexto) : null),
